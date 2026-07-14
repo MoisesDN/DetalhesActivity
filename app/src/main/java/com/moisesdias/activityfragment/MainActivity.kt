@@ -34,10 +34,19 @@ class MainActivity : AppCompatActivity() {
                 DetalhesActivity::class.java
             )
 
-            intent.putExtra("filme", "The Witcher")
+            /*intent.putExtra("filme", "The Witcher")
             intent.putExtra("avaliacoes", 9.2)
-            intent.putExtra("classificacao", 14)
+            intent.putExtra("classificacao", 14)*/
 
+            val filme = Filme(
+                "The Witcher",
+                "Teste",
+                9.2,
+                "Lauren Schmidt",
+                "Warner Bros. Pictures",
+                14
+            )
+            intent.putExtra("filme", filme)
             //Iniciar uma nova tela/Activity
             startActivity(intent)
         }

@@ -1,5 +1,6 @@
 package com.moisesdias.activityfragment
 
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -27,12 +28,20 @@ class DetalhesActivity : AppCompatActivity() {
 
         val bundle = intent.extras
         if (bundle != null) {
-            val filme = bundle.getString("filme")
+            /*val filme = bundle.getString("filme")
             val avaliacoes = bundle.getDouble("avaliacoes")
-            val classificacao = bundle.getInt("classificacao")
+            val classificacao = bundle.getInt("classificacao")*/
 
-            val resultado = "filme: $filme - avaliacoes: $avaliacoes - classificacao: $classificacao"
-            textDetalhes.text = resultado
+            val filme = if (Build.VERSION.SDK_INT >= 33) {
+                bundle.getSerializable("filme", Filme::class.java)
+            } else{
+                bundle.getSerializable("filme") as Filme
+            }
+            //val filme = bundle.getSerializable("filme") as Filme
+
+
+            //val resultado = "filme: ${filme.nome} - avaliacoes: $avaliacoes - classificacao: $classificacao"
+            textDetalhes.text = "${filme?.nome} - ${filme?.distribuidor}"
         }
 
         btnFechar.setOnClickListener {
