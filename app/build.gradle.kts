@@ -1,12 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
     namespace = "com.moisesdias.activityfragment"
     compileSdk {
         version = release(37) {
-            minorApiLevel = 1
+            minorApiLevel = 0
         }
     }
 
