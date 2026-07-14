@@ -34,6 +34,10 @@ class MainActivity : AppCompatActivity() {
                 DetalhesActivity::class.java
             )
 
+            intent.putExtra("filme", "The Witcher")
+            intent.putExtra("avaliacoes", 9.2)
+            intent.putExtra("classificacao", 14)
+
             //Iniciar uma nova tela/Activity
             startActivity(intent)
         }
